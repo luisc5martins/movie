@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import api from '@/plugins/axios'
 
+const TV = ref([]);
 const genres = ref([])
 
 onMounted(async () => {
@@ -13,7 +14,7 @@ onMounted(async () => {
 <template>
     <h1>Programas de TV</h1>
     <ul class="genre-list">
-      <li v-for="genre in genres" :key="genre.id" class="genre-item">
+      <li v-for="genre in genres" :key="genre.id" @click="listTV(genre.id)" class="genre-item">
           {{ genre.name }}
       </li>
     </ul>
