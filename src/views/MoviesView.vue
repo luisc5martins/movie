@@ -24,10 +24,10 @@ onMounted(async () => {
 <template>
   <h1>Filmes</h1>
   <ul class="genre-list">
-    <li v-for="genre in genres" :key="genre.id" @click="listMovies(genre.id)" class="genre-item">
-      {{ genres.name }}
-    </li>
-  </ul>
+      <li v-for="genre in genres" :key="genre.id" @click="listMovies(genre.id)" class="genre-item">
+          {{ genre.name }}
+      </li>
+    </ul>
 
   <div class="movie-list">
     <div v-for="movie in movies" :key="movie.id" class="movie-card">
@@ -36,7 +36,7 @@ onMounted(async () => {
       <div class="movie-details">
         <p class="movie-title">{{ movie.title }}</p>
         <p class="movie-release-date">{{ movie.release_date }}</p>
-        <p class="movie-genres">{{ movie.genre_ids }}</p>
+        <p class="movie-genres" v-for="genre in genres" :key="genre.id">{{ genre.name }}</p>
       </div>
 
     </div>
