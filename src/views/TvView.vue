@@ -24,7 +24,7 @@ const listTV = async (genreId) => {
 
 onMounted(async () => {
   isLoading.value = true
-  await genreStore.getAllGenres('TV')
+  await genreStore.getAllGenres('tv')
   isLoading.value = false
 })
 </script>
