@@ -31,30 +31,26 @@ onMounted(async () => {
 
 <template>
   <h1>Filmes</h1>
-  <ul class="genre-list">
-    <li v-for="genre in genreStore.genres"
-      :key="genre.id"
-      @click="listMovies(genre.id)"
-      class="genre-item">
 
+  <ul class="genre-list">
+    <li tabindex="0" v-for="genre in genreStore.genres" :key="genre.id" @keypress.enter="listMovies(genre.id)" @click="listMovies(genre.id)" class="genre-item">
+                                                                                                                                            
       {{ genre.name }}
-    
+
     </li>
-    </ul>
-    <loading v-model:active="isLoading" is-full-page />
+  </ul>
+  <loading v-model:active="isLoading" is-full-page />
 
   <div class="movie-list">
-    <div v-for="movie in movies" :key="movie.id" class="movie-card">
-
+    <div tabindex="0" v-for="movie in movies" :key="movie.id" @keypress.enter="listMovies(movie.id)" class="movie-card">
       <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" :alt="movie.title" />
       <div class="movie-details">
         <p class="movie-title">{{ movie.title }}</p>
         <p class="movie-release-date">{{ formatDate(movie.release_date) }}</p>
         <p class="movie-genres">
-          <span v-for="genre_id in movie.genre_ids" :key="genre_id" @click="listMovies(genre_id)">
+          <span tabindex="0" v-for="genre_id in movie.genre_ids" :key="genre_id" @keypress.enter="listMovies(genre_id)" @click="listMovies(genre_id)">
             {{ genreStore.getGenreName(genre_id) }}
           </span>
-
         </p>
       </div>
 
@@ -67,6 +63,7 @@ onMounted(async () => {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  justify-content: space-around;
 }
 
 .movie-card {
@@ -109,6 +106,7 @@ onMounted(async () => {
   border-radius: 1rem;
   padding: 0.5rem 1rem;
   color: #fff;
+  text-decoration: none;
 }
 
 .genre-item:hover {
@@ -116,6 +114,7 @@ onMounted(async () => {
   background-color: #4e9e5f;
   box-shadow: 0 0 0.5rem #387250;
 }
+
 .movie-genres {
   display: flex;
   flex-direction: row;
@@ -139,5 +138,4 @@ onMounted(async () => {
   background-color: #455a08;
   box-shadow: 0 0 0.5rem #748708;
 }
-
 </style>
