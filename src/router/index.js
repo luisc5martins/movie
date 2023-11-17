@@ -20,7 +20,13 @@ const routes = [
     path: '/info',
     name: 'Informacoes',
     component: () => import('../views/informacoes.vue')
-  }
+  },
+  {
+    path: '/movie/:movieId',
+    name: 'MovieDetails',
+    component: () => import('../views/MovieDetailsView.vue'),
+    props: true,
+  },
 ]
 
 const router = createRouter({

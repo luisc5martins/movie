@@ -32,7 +32,7 @@ onMounted(async () => {
 <template>
   <h1>Programas de TV</h1>
   <ul class="genre-list">
-    <li v-for="genre in genreStore.genres" :key="genre.id" @click="listTV(genre.id)" class="genre-item">
+    <li v-for="genre in genreStore.genres" :key="genre.id" @click="listTV(genre.id)" @keypress.enter="listTV(TV.id)" class="genre-item">
 
       {{ genre.name }}
 
@@ -41,20 +41,16 @@ onMounted(async () => {
   <loading v-model:active="isLoading" is-full-page />
 
   <div class="TV-list">
-
-    <div v-for="TV in TV" :key="TV.id" class="TV-card">
-
+    <div tabindex="0" v-for="TV in TV" :key="TV.id" @keypress.enter="listTV(TV.id)" class="TV-card">
       <img :src="`https://image.tmdb.org/t/p/w500${TV.poster_path}`" :alt="TV.title" />
-
       <div class="TV-details">
         <p class="TV-title">{{ TV.name }}</p>
         <p class="TV-release-date">{{ formatDate(TV.first_air_date) }}</p>
         <p class="TV-genres">
-          <span v-for="genre_id in TV.genre_ids" :key="genre_id" @click="listTV(genre_id)">
+          <span tabindex="0" v-for="genre_id in TV.genre_ids" :key="genre_id" @keypress.enter="listTV(genre_id)" @click="listTV(genre_id)">
             {{ genreStore.getGenreName(genre_id) }}
           </span>
         </p>
-
       </div>
     </div>
   </div>
