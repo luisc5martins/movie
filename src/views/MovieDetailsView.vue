@@ -51,12 +51,3 @@
   
 </template>
 
-<style scoped>
-  .companies {
-    display: flex;
-    flex-direction: row;
-    column-gap: 3rem;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-</style>
