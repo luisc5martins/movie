@@ -265,7 +265,7 @@ body {
   box-shadow: 0 0 0.5rem #748708;
 
 } header {
-  height: 3rem;
+  height: 80px;
   display: flex;
   background-color: black;
   color: #fff;
