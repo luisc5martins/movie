@@ -30,12 +30,8 @@ function closeNav() {
 <template>
   <header>
     <nav>
-      <div id="mySidenav" class="sidenav">
-        <a href="HomeView.vue" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="TvView.vue">About</a>
-      </div>
 
-      <router-link to="/">Home</router-link>
+      <router-link to="/"><img src="/public/Movie_Hoster.ico" alt="" height="80"></router-link>
       <router-link to="/filmes">Filmes</router-link>
       <router-link to="/tv">Programas de TV</router-link>
 
