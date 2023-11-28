@@ -31,9 +31,9 @@ function closeNav() {
   <header>
     <nav>
 
-      <router-link to="/"><img src="/public/Movie_Hoster.ico" alt="" height="80"></router-link>
       <router-link to="/filmes">Filmes</router-link>
-      <router-link to="/tv">Programas de TV</router-link>
+      <router-link to="/"><img src="/public/Movie_Hoster.ico" alt="" height="80"></router-link>
+      <router-link to="/series">Séries</router-link>
 
       <div style="margin-left:25%">
       </div>

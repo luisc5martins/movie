@@ -36,7 +36,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <h1>Programas de TV</h1>
+  <h1>Séries</h1>
   
   <ul class="genre-list">
     <li v-for="genre in genreStore.genres" :key="genre.id" @click="listTV(genre.id)" @keypress.enter="listTV(TV.id)" class="genre-item">

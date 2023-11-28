@@ -26,7 +26,7 @@
       />
 
       <div class="details">
-        <h1>Programa: {{ tvStore.currentTV.title }}</h1>
+        <h1>Série: {{ tvStore.currentTV.title }}</h1>
         <p>{{ tvStore.currentTV.tagline }}</p>
         <p>{{ tvStore.currentTV.overview }}</p>
         <p>Orçamento: ${{ tvStore.currentTV.budget }}</p>
