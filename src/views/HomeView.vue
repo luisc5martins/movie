@@ -1,11 +1,18 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { defineProps, ref, onMounted } from 'vue';
+import { useRouter } from 'vue-router'
 import api from '@/plugins/axios';
 import Loading from 'vue-loading-overlay';
 import genreStore from '@/stores/genre.js';
 
+
+const router = useRouter()
+const maxLength = 200;
+const mensagemNada = ref('Mais informações em breve...');
+
 const isLoading = ref(false);
 const movies = ref([]);
+const series = ref([]);
 const TV = ref([]);
 const genres = ref([]);
 const formatDate = (date) => new Date(date).toLocaleDateString('pt-BR');
@@ -13,19 +20,41 @@ const props = defineProps(['movies', 'titulo', 'subtitulo']);
 
 const listMovies = async (genreId) => {
   isLoading.value = true;
-  const response = await api.get('discover/movie', {
-    params: {
-      with_genres: genreId,
+  let response = await api.get('movie/popular', {
+    params: {      
       language: 'pt-BR'
     }
   });
   movies.value = response.data.results
+
+  response = await api.get('tv/popular', {
+    params: {      
+      language: 'pt-BR'
+    }
+  });
+  series.value = response.data.results
+
   isLoading.value = false;
 };
+
+const getShortText = overview => {
+    if (overview.length > maxLength) {
+        return `${overview.substring(0, maxLength)}...`;
+    } else if (overview.length === 0) {
+        return mensagemNada.value;
+    } else {
+        return overview;
+    }
+};
+
+function openMovie(movieId) {
+  router.push({ name: 'info', params: { movieId } });
+}
 
 onMounted(async () => {
   isLoading.value = true
   await genreStore.getAllGenres('movie')
+  await listMovies()
   isLoading.value = false
 })
 </script>
@@ -34,7 +63,21 @@ onMounted(async () => {
   <h1>Home</h1>
 
     <div class="Populares">
-
+      <h1>Filmes populares</h1>
+        <div class="popularesCartaz">
+            <div v-for="movie in series" :key="movie.id" class="cartazDeMovie">
+                <img class="poster-filme" :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" :alt="movie.title" />
+                <div class="content">
+                    <h3 class="prompt-title">{{ movie.name }}</h3>
+                    <div class="info">
+                        <p class="prompt-info">{{ getShortText(movie.overview) }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Populares">
+      <h1>Filmes populares</h1>
         <div class="popularesCartaz">
             <div v-for="movie in movies" :key="movie.id" class="cartazDeMovie">
                 <img class="poster-filme" :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" :alt="movie.title" />
@@ -48,11 +91,9 @@ onMounted(async () => {
         </div>
     </div>
 
-    (mudar endereços)
-
   <loading v-model:active="isLoading" is-full-page />
 
-  <div class="movie-list">
+<div class="movie-list">
     <div v-for="movie in movies" :key="movie.id" class="movie-card">
 
       <img :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" :alt="movie.title" />
@@ -72,6 +113,18 @@ onMounted(async () => {
 </template>
 
 <style scoped>
+
+.prompt-title{
+  color: white;
+  -webkit-text-stroke-width: 0.3px;
+    -webkit-text-stroke-color: black;
+}
+
+.prompt-info{
+  color: white;
+  -webkit-text-stroke-width: 0.3px;
+  -webkit-text-stroke-color: black;
+}
 .poster-filme:hover {
     opacity: 0.3;
     transition: 0.5s ease;
@@ -115,10 +168,10 @@ onMounted(async () => {
     display: flex;
     flex-direction: row;
     height: 27rem;
-    background: rgb(92, 13, 172);
-    background: linear-gradient(82deg, rgba(92, 13, 172, 1) 0%, rgba(46, 0, 115, 1) 47%, rgba(0, 18, 255, 0) 95%);
+    background: #a80909;
     overflow-x: scroll;
     padding: 2vh;
+    border-radius: 10px;
 }
 
 .popularesCartaz::-webkit-scrollbar {
@@ -131,9 +184,9 @@ onMounted(async () => {
 }
 
 .popularesCartaz::-webkit-scrollbar-thumb {
-    background-color: rgb(88, 88, 88);
-    outline: 2px solid rgb(15, 0, 0);
-    border-radius: 0.2cm;
+    background-color: rgb(0, 0, 0);
+    outline: 1px solid rgb(88, 88, 88);
+    border-radius: 1cm;
 }
 
 .Populares h1 {
