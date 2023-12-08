@@ -34,7 +34,10 @@
     </div>
   </div>
 
+  <div class="prod">
+  <div>
   <h1>Produtoras</h1>
+</div>
   <div class="companies">
     <template
       v-for="company in movieStore.currentMovie.production_companies"
@@ -48,5 +51,5 @@
       <p v-else>{{ company.name }}</p>
     </template>
   </div>
-  
+</div>
 </template>

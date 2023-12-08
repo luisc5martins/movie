@@ -48,7 +48,7 @@ const getShortText = overview => {
 };
 
 function openMovie(movieId) {
-  router.push({ name: 'info', params: { movieId } });
+  router.push({ name: 'MovieDetails', params: { movieId } });
 }
 
 onMounted(async () => {
@@ -66,7 +66,7 @@ onMounted(async () => {
       <h1>Filmes populares</h1>
         <div class="popularesCartaz">
             <div v-for="movie in series" :key="movie.id" class="cartazDeMovie">
-                <img class="poster-filme" :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" :alt="movie.title" />
+                <img class="poster-filme" :src="`https://image.tmdb.org/t/p/w500${movie.poster_path}`" :alt="movie.title" @click="openMovie(movie.id)" />
                 <div class="content">
                     <h3 class="prompt-title">{{ movie.name }}</h3>
                     <div class="info">
