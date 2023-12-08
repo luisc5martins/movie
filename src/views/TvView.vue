@@ -60,4 +60,18 @@ onMounted(async () => {
     </div>
   </div>
 </template>
+
+<style scoped>
+.TV-list{  
+  
+  display: flex;
+  justify-content: center;
+  
+
+}
+.TV-genres{
+  display: flex;
+  justify-content: center;
+}
+</style>
   
