@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import api from './plugins/axios'
+import footer from '../components/footer.vue';
 
 const moviesGenres = ref([])
 const TVGenres = ref([])
@@ -19,7 +20,7 @@ onMounted(async () => {
     <nav>
 
       <router-link to="/filmes">Filmes</router-link>
-      <router-link to="/"><img src="/public/Movie_Hoster.ico" alt="" height="80"></router-link>
+      <router-link to="/"><img src="/public/Movie_Hoster.ico" alt="" height="90"></router-link>
       <router-link to="/series">Séries</router-link>
 
       <div>
@@ -28,6 +29,7 @@ onMounted(async () => {
   </header>
   <main>
     <router-view />
+    <footer />
   </main>
 </template>
 

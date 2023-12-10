@@ -212,10 +212,7 @@ onMounted(async () => {
 .popularesCartaz::-webkit-scrollbar {
   width: .5em;
   height: 0.6em;
-}
-
-.popularesCartaz::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #a80909;
 }
 
 .popularesCartaz::-webkit-scrollbar-thumb {

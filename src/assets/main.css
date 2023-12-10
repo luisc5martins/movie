@@ -98,7 +98,7 @@ body {
 }
 
 .movie-genres span {
-  background-color: #a80909;
+  background-color: #ff0000;
   border-radius: 0.5rem;
   padding: 0.2rem 0.5rem;
   color: #fff;
@@ -108,7 +108,7 @@ body {
 
 .movie-genres span:hover {
   cursor: pointer;
-  background-color: #a80909;
+  background-color: #ff0000;
   box-shadow: 0 0 0.5rem #ff1212;
 }
 
@@ -182,7 +182,7 @@ body {
 }
 
 .movie-genres span {
-  background-color: #a80909;
+  background-color: #ff0000;
   border-radius: 0.5rem;
   padding: 0.2rem 0.5rem;
   color: #fff;
@@ -192,7 +192,7 @@ body {
 
 .movie-genres span:hover {
   cursor: pointer;
-  background-color: #a80909;
+  background-color: #ff0000;
   box-shadow: 0 0 0.5rem #ff1212;
 }
 .TV-list {
@@ -244,7 +244,7 @@ body {
 }
 
 .genre-item {
-  background-color: #a80909;
+  background-color: #ff0000;
   border-radius: 1rem;
   padding: 0.5rem 1rem;
   color: #fff;
@@ -252,8 +252,8 @@ body {
 
 .genre-item:hover {
   cursor: pointer;
-  background-color: #a80909;
-  box-shadow: 0 0 0.5rem #ff1212;
+  background-color: #ff0000;
+  box-shadow: 0 0 0.5rem #ffffff;
 }
 
 .TV-genres {
@@ -276,7 +276,7 @@ body {
 
 .TV-genres span:hover {
   cursor: pointer;
-  background-color: #a80909;
+  background-color: #ff0000;
   box-shadow: 0 0 0.5rem #ff1212;
 
 } header {
