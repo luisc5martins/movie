@@ -1,7 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import api from './plugins/axios'
-import footer from '../components/footer.vue';
+import footer from './components/footer.vue';
 
 const moviesGenres = ref([])
 const TVGenres = ref([])
