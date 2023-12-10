@@ -19,8 +19,9 @@ onMounted(async () => {
 <template>
   <div class="main">
     <div class="content">
+      <div class="fundo">
       <img :src="`https://image.tmdb.org/t/p/w300${tvStore.currentTV.poster_path}`" :alt="tvStore.currentTV.title" />
-
+      </div>
       <div class="details">
         <h1>Série: {{ tvStore.currentTV.name }}</h1>
         <p>{{ tvStore.currentTV.tagline }}</p>
@@ -45,11 +46,18 @@ onMounted(async () => {
   </div>
 </div>
 </template>
-<style scoped>
-.sobreTV{
- width: 30%;
- margin-left: 35%;
- margin-right: 35%;
- font-size: larger;}
-</style>
 
+<style scoped>
+.fundo{
+  background-image: url(../assets/banner.png);
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 460px;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: 1600px;
+}
+
+h1{
+  margin-top: 40px;
+}</style>

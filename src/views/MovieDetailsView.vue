@@ -20,20 +20,19 @@ onMounted(async () => {
   <div class="main">
     <div class="content">
       <div class="fundo">
-      <img :src="`https://image.tmdb.org/t/p/w500${movieStore.currentMovie.poster_path}`"
-        height="350"
-        :alt="movieStore.currentMovie.title" />
+      <img :src="`https://image.tmdb.org/t/p/w300${movieStore.currentMovie.poster_path}`" :alt="movieStore.currentMovie.title" />
       </div>
       <div class="details">
         <h1>Filme: {{ movieStore.currentMovie.title }}</h1>
         <p>{{ movieStore.currentMovie.tagline }}</p>
+        <div class="sobreMovie">
         <p>{{ movieStore.currentMovie.overview }}</p>
+        </div>
         <p>Orçamento: ${{ movieStore.currentMovie.budget }}</p>
         <p>Avaliação: {{ movieStore.currentMovie.vote_average }}</p>
       </div>
     </div>
   </div>
-
   <div class="prod">
   <div>
     <h1>Produtoras:</h1>
@@ -46,3 +45,20 @@ onMounted(async () => {
   </div>
   </div>
 </template>
+
+<style scoped>
+
+.fundo{
+  background-image: url(../assets/banner.png);
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 460px;
+  background-position-x: center;
+  background-position-y: center;
+  background-size: 1600px;
+}
+
+h1{
+  margin-top: 50px;
+}
+</style>

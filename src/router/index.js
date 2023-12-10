@@ -17,11 +17,6 @@ const routes = [
     component: () => import('../views/TvView.vue')
   },
   {
-    path: '/info',
-    name: 'Informacoes',
-    component: () => import('../views/informacoes.vue')
-  },
-  {
     path: '/movie/:movieId',
     name: 'MovieDetails',
     component: () => import('../views/MovieDetailsView.vue'),
