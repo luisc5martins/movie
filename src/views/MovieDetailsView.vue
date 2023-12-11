@@ -55,7 +55,7 @@ onMounted(async () => {
   height: 460px;
   background-position-x: center;
   background-position-y: center;
-  background-size: 1600px;
+  background-size: 100%;
 }
 
 h1{
