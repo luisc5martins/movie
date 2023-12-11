@@ -17,6 +17,8 @@ function openTV(TVId) {
 }
 
 const listTV = async (genreId) => {
+  if (genreId !== 0) {
+  genreStore.setCurrentGenreId(genreId);
   isLoading.value = true;
   const response = await api.get('discover/tv', {
     params: {
@@ -24,13 +26,24 @@ const listTV = async (genreId) => {
       language: 'pt-BR'
     }
   });
-  TV.value = response.data.results
+  TV.value = response.data.results;
   isLoading.value = false;
+}else {
+  isLoading.value = true;
+  const response = await api.get('tv/popular', {
+    params: {
+      language: 'pt-BR'
+    },
+  });
+  TV.value = response.data.results;
+  isLoading.value = false;
+}
 };
 
 onMounted(async () => {
   isLoading.value = true
   await genreStore.getAllGenres('tv')
+  listTV(0)
   isLoading.value = false
 })
 </script>

@@ -17,6 +17,7 @@ function openMovie(movieId) {
 }
 
 const listMovies = async (genreId) => {
+  if (genreId !== 0) {
   genreStore.setCurrentGenreId(genreId);
   isLoading.value = true;
   const response = await api.get('discover/movie', {
@@ -27,11 +28,22 @@ const listMovies = async (genreId) => {
   });
   movies.value = response.data.results;
   isLoading.value = false;
+} else {
+  isLoading.value = true;
+  const response = await api.get('movie/popular', {
+    params: {
+      language: 'pt-BR',
+    },
+  });
+  movies.value = response.data.results;
+  isLoading.value = false;
+}
 };
 
 onMounted(async () => {
   isLoading.value = true
   await genreStore.getAllGenres('movie')
+  listMovies(0)
   isLoading.value = false
 })
 </script>
